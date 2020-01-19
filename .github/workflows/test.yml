@@ -7,17 +7,43 @@ jobs:
     name: Build and Publish
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: hoge
+
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Ruby 2.6
+
+    - name: install libraries
+      run: sudo apt install -y libmysqlclient-dev
+
+    - name: install libsodium
+      run: |
+        wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz -O /tmp/LATEST.tar.gz
+        tar zxvf /tmp/LATEST.tar.gz -C /tmp
+        cd /tmp/libsodium-stable
+        ./configure
+        make
+        sudo make install
+
+    - name: Set up Ruby
       uses: actions/setup-ruby@v1
-      with:
-        versions: 2.6.x
 
-    # - name: Build and test with ruby
-    #   run: |
-    #     gem install bundler
-    #     bundle install --jobs 4 --retry 3
-
-    - name: exec ruby
+    - name: check ruby version
       run: ruby --version
+
+    - name: bundle install
+      run: |
+        gem install bundler
+        bundle install --jobs 4
+
+    - name: setup database
+      run: |
+        bundle exec rails db:create
+        bundle exec ridgepole -c config/database.yml --apply -f db/schema -E test
+
+    - name: exec rspec
+      run: |
+        bundle exec rspec
