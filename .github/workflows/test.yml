@@ -5,9 +5,9 @@ on: [push]
 jobs:
   build:
     name: Build and Publish
-    runs-on: docker://docker.io/utyosu/build-rails:latest
 
     steps:
+    - uses: docker://docker.io/utyosu/build-rails:latest
     - uses: actions/checkout@v1
 
     - name: hoge
