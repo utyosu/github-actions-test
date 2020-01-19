@@ -5,7 +5,7 @@ on: [push]
 jobs:
   build:
     name: Build and Publish
-    runs-on: docker://utyosu/build-rails
+    runs-on: docker://docker.io/utyosu/build-rails
 
     steps:
     - uses: actions/checkout@v1
