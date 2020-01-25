@@ -16,6 +16,9 @@ jobs:
       run: ls
 
     - name: hoge
+      run: cat entrypoint.sh
+
+    - name: hoge
       run: . entrypoint.sh
 
     # - name: install libraries
