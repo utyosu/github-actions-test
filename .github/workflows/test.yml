@@ -3,16 +3,17 @@ name: CI
 on: [push]
 
 jobs:
-  runs-on: ubuntu-16.04
+  build:
+    runs-on: ubuntu-16.04
 
-  steps:
-  - uses: actions/checkout@master
+    steps:
+    - uses: actions/checkout@master
 
-  - name: hoge
-    run: ls
+    - name: hoge
+      run: ls
 
-  - name: hoge
-    run: . entrypoint.sh
+    - name: hoge
+      run: . entrypoint.sh
 
     # - name: install libraries
     #   run: sudo apt install -y libmysqlclient-dev
