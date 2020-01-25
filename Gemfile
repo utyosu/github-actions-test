@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.6.5'
 gem 'rails'
-gem 'mysql2', '~>0.3.21'
+gem 'mysql2'
 gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
