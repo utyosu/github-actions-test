@@ -17,8 +17,15 @@ jobs:
       image: utyosu/build-rails:latest
 
     steps:
-    - run: /app/run.sh https://github.com/utyosu/github-actions-test.git master tools/cloud_build/test.sh
-    # - uses: actions/checkout@master
+    - uses: actions/checkout@master
+    - run: |
+      ls
+      pwd
+    # - run: /app/run.sh https://github.com/utyosu/github-actions-test.git master tools/cloud_build/test.sh
+
+
+
+
     # - uses: actions/setup-ruby@master
     #   with:
     #     ruby-version: 2.6.5
