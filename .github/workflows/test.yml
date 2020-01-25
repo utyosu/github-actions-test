@@ -11,4 +11,5 @@ jobs:
 
     steps:
     - run: echo ${GITHUB_REPOSITORY}
+    - run: echo ${GITHUB_REF}
     - run: /app/run.sh https://github.com/${GITHUB_REPOSITORY}.git master tools/cloud_build/test.sh
