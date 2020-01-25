@@ -7,12 +7,11 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: utyosu/build-rails:latest
+      image: utyosu/build-rails-test:latest
 
     steps:
     - uses: actions/checkout@master
     - name: run test
       run: |
-        export PATH="/root/.rbenv/bin:/root/.rbenv/shims:$PATH"
-        find /var/lib/mysql -type f -exec touch {} \;
+        echo $PATH
         . tools/cloud_build/test.sh
