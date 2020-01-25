@@ -6,6 +6,9 @@ jobs:
   build:
     runs-on: ubuntu-16.04
 
+    container:
+      image: utyosu/build-rails:latest
+
     steps:
     - uses: actions/checkout@master
 
