@@ -6,13 +6,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:5.7
+        options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
+        env:
+          MYSQL_ROOT_PASSWORD: ""
+
     steps:
     - uses: actions/checkout@master
     - uses: actions/setup-ruby@master
       with:
-        ruby-version: 2.6
+        ruby-version: 2.6.5
 
-    - name: hoge
+    - name: test
       run: |
         gem install bundler
         bundle install --jobs 4
