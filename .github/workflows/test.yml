@@ -6,51 +6,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:5.7
-        options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
-        env:
-          MYSQL_ROOT_PASSWORD: "hogehoge"
+    # services:
+    #   mysql:
+    #     image: mysql:5.7
+    #     options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
+    #     env:
+    #       MYSQL_ROOT_PASSWORD: "hogehoge"
+
+    container:
+      image: utyosu/build-rails:latest
 
     steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-ruby@master
-      with:
-        ruby-version: 2.6.5
-
-    - name: install libraries
-      run: |
-        sudo apt-get install -y libmysqlclient-dev
-
-    - name: test
-      run: |
-        gem install bundler
-        bundle config set without development
-        bundle install --jobs 4
-        bundle exec rspec
+    - run: ruby --version
+    # - uses: actions/checkout@master
+    # - uses: actions/setup-ruby@master
+    #   with:
+    #     ruby-version: 2.6.5
 
     # - name: install libraries
-    #   run: sudo apt install -y libmysqlclient-dev
-
-    # - name: install libsodium
     #   run: |
-    #     wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz -O /tmp/LATEST.tar.gz
-    #     tar zxvf /tmp/LATEST.tar.gz -C /tmp
-    #     cd /tmp/libsodium-stable
-    #     ./configure
-    #     make
-    #     sudo make install
+    #     sudo apt-get install -y libmysqlclient-dev
 
-    # - name: Set up Ruby
-    #   uses: actions/setup-ruby@v1
-
-    # - name: check ruby version
-    #   run: ruby --version
-
-    # - name: bundle install
+    # - name: test
     #   run: |
     #     gem install bundler
+    #     bundle config set without development
     #     bundle install --jobs 4
 
     # - name: setup database
@@ -58,6 +38,5 @@ jobs:
     #     bundle exec rails db:create
     #     bundle exec ridgepole -c config/database.yml --apply -f db/schema -E test
 
-    # - name: exec rspec
-    #   run: |
-    #     bundle exec rspec
+    # - name: run rspec
+    #   run: bundle exec rspec
