@@ -12,5 +12,8 @@ jobs:
     steps:
     - name: get branch name
       run: BRANCH_NAME=`echo "${GITHUB_REF}" | sed "s/^\(refs\/heads\/\|refs\/remotes\/\)//"`
-    - run: echo ${GITHUB_REPOSITORY} ${BRANCH_NAME}
+    - run: echo "${GITHUB_REF}" | sed "s/^\(refs\/heads\/\|refs\/remotes\/\)//"
+    - run: echo ${GITHUB_REF}
+    - run: echo ${GITHUB_REPOSITORY}
+    - run: echo ${BRANCH_NAME}
     - run: /app/run.sh https://github.com/${GITHUB_REPOSITORY}.git ${BRANCH_NAME} tools/cloud_build/test.sh
