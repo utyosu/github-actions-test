@@ -11,5 +11,8 @@ jobs:
 
     steps:
     - run: |
-        BRANCH_NAME=`echo "${GITHUB_REF}" | sed "s/^\(refs\/heads\/\|refs\/remotes\/\)//"`
-        /app/run.sh https://github.com/${GITHUB_REPOSITORY}.git ${BRANCH_NAME} tools/cloud_build/test.sh
+        BRANCH=`curl -X GET -H "Authorization: token ${GITHUB_TOKEN}" ${API_ENDPOINT} | jq -r '.head.ref'`
+        echo $BRANCH
+    # - run: |
+    #     BRANCH_NAME=`echo "${GITHUB_REF}" | sed "s/^\(refs\/heads\/\|refs\/remotes\/\)//"`
+    #     /app/run.sh https://github.com/${GITHUB_REPOSITORY}.git ${BRANCH_NAME} tools/cloud_build/test.sh
