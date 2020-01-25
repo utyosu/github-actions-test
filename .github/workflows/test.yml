@@ -5,6 +5,7 @@ on: [push]
 jobs:
   build:
     name: Test
+    runs-on: ubuntu-16.04
 
     steps:
     - uses: actions/checkout@master
