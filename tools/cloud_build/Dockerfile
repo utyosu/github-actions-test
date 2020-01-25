@@ -44,7 +44,9 @@
 
 FROM build-rails
 
-RUN set -x \
-  && echo '' > /root/.bashrc \
-  && echo 'export PATH="/root/.rbenv/bin:/root/.rbenv/shims:$PATH"' >> /root/.bashrc \
-  && echo 'find /var/lib/mysql -type f -exec touch {} \;' >> /root/.bashrc
+ENV PATH /root/.rbenv/bin:/root/.rbenv/shims:$PATH
+
+# RUN set -x \
+#   && echo '' > /root/.bashrc \
+#   && echo 'export PATH="/root/.rbenv/bin:/root/.rbenv/shims:$PATH"' >> /root/.bashrc \
+#   && echo 'find /var/lib/mysql -type f -exec touch {} \;' >> /root/.bashrc
