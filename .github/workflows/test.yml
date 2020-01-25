@@ -11,6 +11,6 @@ jobs:
 
     steps:
     - run: |
-      BRANCH_NAME=`echo "${GITHUB_REF}" | sed "s/^\(refs\/heads\/\|refs\/remotes\/\)//"`
-      echo ${BRANCH_NAME}
-      /app/run.sh https://github.com/${GITHUB_REPOSITORY}.git ${BRANCH_NAME} tools/cloud_build/test.sh
+        BRANCH_NAME=`echo "${GITHUB_REF}" | sed "s/^\(refs\/heads\/\|refs\/remotes\/\)//"`
+        echo ${BRANCH_NAME}
+        /app/run.sh https://github.com/${GITHUB_REPOSITORY}.git ${BRANCH_NAME} tools/cloud_build/test.sh
