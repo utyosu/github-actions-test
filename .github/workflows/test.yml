@@ -1,17 +1,17 @@
-name: CI
+# name: CI
 
-on: [push]
+# on: [push]
 
-jobs:
-  build:
-    name: Build and Publish
+# jobs:
+#   build:
+#     name: Build and Publish
 
-    steps:
-    - uses: docker://docker.io/utyosu/build-rails:latest
-    - uses: actions/checkout@v1
+#     steps:
+#     - uses: docker://docker.io/utyosu/build-rails:latest
+#     - uses: actions/checkout@v1
 
-    - name: hoge
-      run: echo hogehoge
+#     - name: hoge
+#       run: echo hogehoge
 
     # - name: install libraries
     #   run: sudo apt install -y libmysqlclient-dev
