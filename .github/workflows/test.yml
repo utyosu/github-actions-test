@@ -19,7 +19,7 @@ jobs:
       run: cat entrypoint.sh
 
     - name: hoge
-      run: . entrypoint.sh
+      run: ./entrypoint.sh
 
     # - name: install libraries
     #   run: sudo apt install -y libmysqlclient-dev
