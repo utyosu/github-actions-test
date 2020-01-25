@@ -11,7 +11,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
-    - run: |
+    - name: run test
+      run: |
         export PATH="/root/.rbenv/bin:/root/.rbenv/shims:$PATH"
         find /var/lib/mysql -type f -exec touch {} \;
-        tools/cloud_build/test.sh
+        . tools/cloud_build/test.sh
