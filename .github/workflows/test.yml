@@ -10,7 +10,7 @@ jobs:
       image: utyosu/build-rails:latest
 
     steps:
-    - run: echo ${GITHUB_REPOSITORY}
-    - run: echo ${GITHUB_REF}
-    - run: echo ${GITHUB_SHA}
-    - run: /app/run.sh https://github.com/${GITHUB_REPOSITORY}.git ${GITHUB_SHA} tools/cloud_build/test.sh
+    - name: get branch name
+      run: BRANCH_NAME=`echo "${GITHUB_REF}" | sed "s/^\(refs\/heads\/\|refs\/remotes\/\)//"`
+es\/\)//"`
+    - run: /app/run.sh https://github.com/${GITHUB_REPOSITORY}.git ${BRANCH_NAME} tools/cloud_build/test.sh
