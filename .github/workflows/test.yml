@@ -6,53 +6,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # services:
-    #   mysql:
-    #     image: mysql:5.7
-    #     options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
-    #     env:
-    #       MYSQL_ROOT_PASSWORD: "hogehoge"
-
     container:
       image: utyosu/build-rails:latest
 
     steps:
-    - uses: actions/checkout@master
-    - name: setup
-      run: |
-        export PATH="/root/.rbenv/bin:/root/.rbenv/shims:$PATH"
-        find /var/lib/mysql -type f -exec touch {} \;
-        service mysql start
-        export RAILS_ENV=test
-        bundle config set without development
-        bundle install
-        bundle exec rails db:create
-        bundle exec ridgepole -c config/database.yml --apply -f db/schema -E test
-        bundle exec rspec
-
-    # - run: /app/run.sh https://github.com/utyosu/github-actions-test.git master tools/cloud_build/test.sh
-
-
-
-
-    # - uses: actions/setup-ruby@master
-    #   with:
-    #     ruby-version: 2.6.5
-
-    # - name: install libraries
-    #   run: |
-    #     sudo apt-get install -y libmysqlclient-dev
-
-    # - name: test
-    #   run: |
-    #     gem install bundler
-    #     bundle config set without development
-    #     bundle install --jobs 4
-
-    # - name: setup database
-    #   run: |
-    #     bundle exec rails db:create
-    #     bundle exec ridgepole -c config/database.yml --apply -f db/schema -E test
-
-    # - name: run rspec
-    #   run: bundle exec rspec
+    - run: /app/run.sh https://github.com/utyosu/github-actions-test.git master tools/cloud_build/test.sh
