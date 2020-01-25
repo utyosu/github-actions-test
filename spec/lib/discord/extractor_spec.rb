@@ -2,9 +2,9 @@ require './spec/rails_helper'
 require './spec/spec_helper'
 
 describe Extractor do
-  around do |e|
-    travel_to('2018-3-10 8:00'.in_time_zone) {e.run}
-  end
+  # around do |e|
+  #   travel_to('2018-3-10 8:00'.in_time_zone) {e.run}
+  # end
 
   describe '.extraction_time' do
     subject { Extractor.extraction_time(target) }
