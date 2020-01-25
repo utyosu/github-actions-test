@@ -21,6 +21,7 @@ jobs:
         ls
         pwd
         /root/.rbenv/shims/ruby --version
+        /app/run.sh
     # - uses: actions/checkout@master
     # - uses: actions/setup-ruby@master
     #   with:
