@@ -18,8 +18,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
-    - run: ls
-    - run: pwd
+    - name: setup
+      run: |
+        export PATH="/root/.rbenv/bin:/root/.rbenv/shims:$PATH"
+        find /var/lib/mysql -type f -exec touch {} \;
+        bundle install
+        bundle exec rspec
 
     # - run: /app/run.sh https://github.com/utyosu/github-actions-test.git master tools/cloud_build/test.sh
 
