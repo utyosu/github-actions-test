@@ -19,6 +19,10 @@ jobs:
       with:
         ruby-version: 2.6.5
 
+    - name: install libraries
+      run: |
+        yum install mysql-devel
+
     - name: test
       run: |
         gem install bundler
