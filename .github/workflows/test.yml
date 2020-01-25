@@ -6,11 +6,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    container:
-      image: utyosu/build-rails:latest
+    # container:
+    #   image: utyosu/build-rails:latest
 
     steps:
-    - run: |
+    - env:
+        API_ENDPOINT: ${{ github.event.issue.pull_request.url }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
         BRANCH=`curl -X GET -H "Authorization: token ${GITHUB_TOKEN}" ${API_ENDPOINT} | jq -r '.head.ref'`
         echo $BRANCH
     # - run: |
