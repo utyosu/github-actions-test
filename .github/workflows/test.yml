@@ -7,11 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: utyosu/build-rails-test:latest
+      image: utyosu/build-rails:latest
 
     steps:
     - uses: actions/checkout@master
     - name: run test
-      run: |
-        echo $PATH
-        . tools/cloud_build/test.sh
+      run: . tools/cloud_build/test.sh
