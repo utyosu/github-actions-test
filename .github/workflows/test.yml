@@ -17,10 +17,11 @@ jobs:
       image: utyosu/build-rails:latest
 
     steps:
-      - uses: actions/checkout@master
-      - run: |
+    - uses: actions/checkout@master
+    - run: |
         ls
         pwd
+
     # - run: /app/run.sh https://github.com/utyosu/github-actions-test.git master tools/cloud_build/test.sh
 
 
