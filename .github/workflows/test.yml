@@ -4,14 +4,16 @@ on: [push]
 
 jobs:
   build:
-    name: Test
     runs-on: ubuntu-16.04
 
     steps:
     - uses: actions/checkout@master
 
     - name: hoge
-      run: echo hogehoge
+      run: ls
+
+    - name: hoge
+      run: ./entrypoint.sh
 
     # - name: install libraries
     #   run: sudo apt install -y libmysqlclient-dev
