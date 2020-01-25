@@ -5,7 +5,6 @@ default: &default
   collation: utf8mb4_bin
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: hoge
   socket: /var/run/mysqld/mysqld.sock
 
 development:
@@ -19,5 +18,4 @@ test:
 production:
   <<: *default
   database: discord_recruitment_bot_production
-  username: ops
   password: <%= ENV['DATABASE_PASSWORD'] %>
