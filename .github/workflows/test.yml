@@ -14,4 +14,4 @@ jobs:
     - run: |
         export PATH="/root/.rbenv/bin:/root/.rbenv/shims:$PATH"
         find /var/lib/mysql -type f -exec touch {} \;
-        /app/run.sh https://github.com/${GITHUB_REPOSITORY}.git tools/cloud_build/test.sh
+        tools/cloud_build/test.sh
