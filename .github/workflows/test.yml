@@ -17,7 +17,7 @@ jobs:
       image: utyosu/build-rails:latest
 
     steps:
-    - run: ruby --version
+    - run: . run.sh
     # - uses: actions/checkout@master
     # - uses: actions/setup-ruby@master
     #   with:
